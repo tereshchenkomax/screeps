@@ -1,0 +1,13 @@
+Usage:
+
+./sync --local
+This will update the code directly through a browser hook. This works much faster
+while editing code in simulation mode, and can even be used while offline.
+
+cat sync.crx.b64 | base64 -D > sync.crx
+This is an extension you can add to Chrome to avoid having to paste the bootstrap
+line in each time.
+
+./sync --auth 'username@example.com:password'
+This will sync code via the Screeps Grunt API
+

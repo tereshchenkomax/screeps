@@ -1,0 +1,7 @@
+source.memory = this.memory.sources[source.id]; //Set the shortcut
+^
+TypeError: Cannot read property 'sources' of undefined
+at Object.module.exports.loop (main:89:44)
+at __mainLoop:1:52
+at sigintHandlersWrap (vm.js:32:31)
+at sigintHandlersWrap (vm.js:73:12)
