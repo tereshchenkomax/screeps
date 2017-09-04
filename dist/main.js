@@ -5,12 +5,12 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleTower = require('role.tower');
-var ROOM = Game.rooms['E83S75'];
+var ROOM = Game.rooms['W48S22'];
 
 module.exports.loop = function () {
 
     for(let name in Game.rooms) {
-        console.log('Room "'+name+'" has '+Game.rooms['E83S75'].energyAvailable+' energy');
+        console.log('Room "'+name+'" has '+Game.rooms['W48S22'].energyAvailable+' energy');
     }
 
     for(let name in Memory.creeps) {
@@ -23,8 +23,8 @@ module.exports.loop = function () {
     var upgraders = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrader');
     var builders = _.filter(Game.creeps, (creep) => creep.memory.role == 'builder');
     var repairers = _.filter(Game.creeps, (creep) => creep.memory.role == 'repairer');
-    var energy = Game.rooms['E83S75'].energyCapacityAvailable;
-    var energyAvialable = Game.rooms['E83S75'].energyAvailable;
+    var energy = Game.rooms['W48S22'].energyCapacityAvailable;
+    var energyAvialable = Game.rooms['W48S22'].energyAvailable;
 
     console.log('Harvesters: ' + harvesters.length+' upgraders: ' + upgraders.length+
         ' builders: ' + builders.length+' repairers'+repairers.length);
@@ -67,25 +67,5 @@ module.exports.loop = function () {
         }
     }
 
-    Object.defineProperty(Source.prototype, 'memory', {
-        get: function() {
-            if(_.isUndefined(this.room.memory.sources)) {
-                this.room.memory.sources = {};
-            }
-            if(!_.isObject(this.room.memory.sources)) {
-                return undefined;
-            }
-            return this.room.memory.sources[this.id] = this.room.memory.sources[this.id] || {};
-        },
-        set: function(value) {
-            if(_.isUndefined(this.room.memory.sources)) {
-                Memory.sources = {};
-            }
-            if(!_.isObject(this.room.memory.sources)) {
-                throw new Error('Could not set source memory');
-            }
-            this.room.memory.sources[this.id] = value;
-        }
-    });
 }
 
